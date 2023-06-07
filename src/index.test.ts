@@ -17,7 +17,9 @@ describe (
 			}
 		)
 		afterAll(
+			()=>{
 			app.close()
+			}
 		)
 
         test (

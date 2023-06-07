@@ -1,4 +1,4 @@
 module.exports={
 	preset:'ts-jest',
-	textEnviroment:'node'
+	testEnviroment:'node'
 }
