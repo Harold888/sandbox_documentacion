@@ -1,7 +1,7 @@
 //1. Importar las bibliotecas 
 
 import request from 'supertest'
-import App from './Router'
+import App from '../src/App'
 import { before } from 'node:test'
 
 describe (
