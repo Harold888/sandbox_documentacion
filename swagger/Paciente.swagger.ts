@@ -3,8 +3,8 @@ export default{
  * 
  * @swagger
  * 
- * /paciente:
- *  post:
+ * /pacientes:
+ *  get:
  *      sumary: Obtener un mensaje de prueba 
  *      responses:
  *          200:
