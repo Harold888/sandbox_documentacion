@@ -35,7 +35,7 @@ model Medico {
 }
 
 model Cita {
-  idCita Int      @id
+  idCita Int      @id @default(autoincrement())
   fecha  DateTime
 
   Paciente                 Paciente? @relation(fields: [pacienteCedula], references: [cedula])

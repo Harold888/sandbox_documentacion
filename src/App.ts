@@ -36,7 +36,7 @@ class App {
 	/**
 	 * Definbir y agregar las rutas de la API con express
 	 */
-	private routes(): void {
+	private routes(): void { 
 		this.app.use('/',PacienteRouter)
 		this.app.use('/',MedicoRouter)
 		this.app.use('/',FormularioRouter)

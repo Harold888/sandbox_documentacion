@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 import { PrismaClient } from "@prisma/client";
 
 class MedicoController {
-  private prismaCliente: PrismaClient;
+  private prismaCliente: PrismaClient
 
   constructor() {
-    this.prismaCliente = new PrismaClient();
+    this.prismaCliente = new PrismaClient()
   }
 
   async obtenerMedicos(req: Request, res: Response) {
@@ -14,7 +14,7 @@ class MedicoController {
   }
 
   async crearMedico(req: Request, res: Response) {
-    const { tarjetaProfesional, nombre, apellido, correo, consultorio, Especialidad } = req.body;
+    const { tarjetaProfesional, nombre, apellido, correo, consultorio, Especialidad } = req.body
 
     try {
       const medico = await this.prismaCliente.medico.create({
