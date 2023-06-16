@@ -1,50 +1,75 @@
-import {Response, Request} from 'express'
-import {PrismaClient} from '@prisma/client'
+import { Router, Response, Request } from 'express'
+import { PrismaClient, Paciente } from '@prisma/client'
 
-class PacienteController{
+class PacienteController {
+  private prismaClient: PrismaClient
 
-    private prismaClient: PrismaClient
+  constructor() {
+    this.prismaClient = new PrismaClient()
+  }
 
-    constructor(){
+  async obtenerPacientes(req: Request, res: Response) {
+    const pacientes = await this.prismaClient.paciente.findMany()
+    res.json(pacientes)
+  }
 
-        this.prismaClient= new PrismaClient()
-        
+  async crearPaciente(req: Request, res: Response) {
+    try {
+      const { cedula, nombre, apellido, fecha, telefono } = req.body;
+
+      const fechaNacimiento = new Date(fecha)
+      const paciente = await this.prismaClient.paciente.create({
+        data: {
+          cedula: parseInt(cedula),
+          nombre,
+          apellido,
+          fechaNacimiento,
+          telefono,
+        },
+      })
+      res.json(paciente)
+    } catch (e: any) {
+      res.status(400)
+      res.json({ error: e.message })
     }
+  }
 
-    async obtenerPacientes (req:Request, res:Response){
-        const pacientes = await this.prismaClient.paciente.findMany()
-        res.json(pacientes)
+  async actualizarPaciente(req: Request, res: Response) {
+    try {
+      const pacienteId = parseInt(req.params.cedula)
+      const { cedula, nombre, apellido, fecha, telefono } = req.body;
+
+      const fechaNacimiento = new Date(fecha)
+      const paciente = await this.prismaClient.paciente.update({
+        where: { cedula: pacienteId },
+        data: {
+          cedula,
+          nombre,
+          apellido,
+          fechaNacimiento,
+          telefono,
+        },
+      });
+      res.json(paciente)
+    } catch (e: any) {
+      res.status(400)
+      res.json({ error: e.message })
+    }
+    console.log(req.body)
+  }
+
+  async eliminarPaciente(req: Request, res: Response) {
+    try {
+      const pacienteId = parseInt(req.params.cedula)
+
+      await this.prismaClient.paciente.delete({ where: { cedula: pacienteId } })
+      res.json({ message: 'Paciente eliminado correctamente' })
+    } catch (e: any) {
+      res.status(400)
+      res.json({ error: e.message })
     }
     
-    async crearPaciente(req: Request, res: Response){
-        try{
-        const{
-            cedula,
-            nombre,
-            apellido,
-            fecha,
-            telefono
-        } = req.body
-        
-        const fechaNacimiento = new Date(fecha)
-        const paciente = await this.prismaClient.paciente.create(
-            {
-                data:{
-                    cedula,
-                    nombre,
-                    apellido,
-                    fechaNacimiento,
-                    telefono
-                }
-            }
-        )
-        res.json(paciente)
-    }catch(e:any){
-        res.status(400)
-        res.json({error:e.message})
-    }
-    }
-
+  }
 }
 
-export default PacienteController
+export default PacienteController;

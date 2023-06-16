@@ -7,6 +7,7 @@ import PacienteRouter from './routes/Paciente.routes'
 import MedicoRouter from './routes/Medico.routes'
 import FormularioRouter from './routes/Formulario.routes'
 import cors from 'cors'
+
 /**
  *  Clase principal de la API, Define las rutas de la API
  // eslint-disable-next-line linebreak-style
@@ -26,8 +27,8 @@ class App {
 		this.app = express()
 		this.app.use(express.json())
 		this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
-		this.routes()
 		this.app.use(cors())
+		this.routes()		
 	}
 	
 	/**
@@ -37,6 +38,7 @@ class App {
 		this.app.use('/',PacienteRouter)
 		this.app.use('/',MedicoRouter)
 		this.app.use('/',FormularioRouter)
+		
 	}
 
 	public start():void {

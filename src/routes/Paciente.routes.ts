@@ -1,5 +1,5 @@
-import { Router, Response, Request} from "express";
-import PacienteController from "../controllers/PacienteController";
+import { Router, Response, Request} from "express"
+import PacienteController from "../controllers/PacienteController"
 
 class PacienteRouter{
 
@@ -26,6 +26,13 @@ class PacienteRouter{
                 this.pacienteController.crearPaciente(req, res)
             }
         )
+        this.router.put('/actualizar_paciente/:cedula', (req: Request, res: Response) => {
+            this.pacienteController.actualizarPaciente(req, res)
+          })
+      
+          this.router.delete('/eliminar_paciente/:cedula', (req: Request, res: Response) => {
+            this.pacienteController.eliminarPaciente(req, res)
+          })
     }
 }
 

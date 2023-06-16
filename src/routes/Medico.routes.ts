@@ -17,6 +17,16 @@ class MedicoRouter{
             this.medicoController.obtenerMedicos(req, res)
         }
         )
+        
+        this.router.post('/crear_medico',
+        (req:Request, res:Response)=>{
+            this.medicoController.crearMedico(req, res)
+        }
+        )
+
+        this.router.delete('/eliminar_medico/:tarjetaProfesional', (req: Request, res: Response) => {
+            this.medicoController.eliminarMedico(req, res)
+          })
     }
 }
 
