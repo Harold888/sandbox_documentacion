@@ -7,6 +7,8 @@ import PacienteRouter from './routes/Paciente.routes'
 import MedicoRouter from './routes/Medico.routes'
 import FormularioRouter from './routes/Formulario.routes'
 import cors from 'cors'
+import EspecialidadRouter from './routes/Especialidad.routes'
+import CitaRouter from './routes/Cita.routes'
 
 /**
  *  Clase principal de la API, Define las rutas de la API
@@ -38,6 +40,8 @@ class App {
 		this.app.use('/',PacienteRouter)
 		this.app.use('/',MedicoRouter)
 		this.app.use('/',FormularioRouter)
+		this.app.use('/',EspecialidadRouter)
+		this.app.use('/',CitaRouter)
 		
 	}
 

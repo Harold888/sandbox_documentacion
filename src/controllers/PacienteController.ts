@@ -70,6 +70,21 @@ class PacienteController {
     }
     
   }
+  async obtenerPacientePorCedula(req: Request, res: Response) {
+    try {
+      const cedula = req.params.cedula;
+      const paciente = await this.prismaClient.paciente.findUnique({ where: { cedula: parseInt(cedula) } })
+  
+      if (paciente) {
+        res.json(paciente)
+      } else {
+        res.status(404).json({ message: 'Paciente no encontrado' })
+      }
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: 'Error al obtener el paciente' })
+    }
+  }
 }
 
 export default PacienteController;

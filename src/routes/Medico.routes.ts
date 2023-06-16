@@ -23,6 +23,15 @@ class MedicoRouter{
             this.medicoController.crearMedico(req, res)
         }
         )
+        this.router.get(
+            '/actualizar_medico/:tarjetaProfesional',
+            (req: Request, res: Response) => this.medicoController.obtenerMedicoPorTarjetaProfesional(req, res)
+          )
+
+          this.router.put(
+            '/actualizar_medico/:tarjetaProfesional',
+            (req: Request, res: Response) => this.medicoController.actualizarMedico(req, res)
+          )      
 
         this.router.delete('/eliminar_medico/:tarjetaProfesional', (req: Request, res: Response) => {
             this.medicoController.eliminarMedico(req, res)

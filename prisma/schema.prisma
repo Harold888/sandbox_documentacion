@@ -45,7 +45,7 @@ model Cita {
 }
 
 model Especialidad {
-  idEspecialidad Int      @id
+  idEspecialidad Int      @id @default(autoincrement())
   nombre         String
   Medico         Medico[]
 }
