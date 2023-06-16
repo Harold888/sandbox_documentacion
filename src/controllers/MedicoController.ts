@@ -28,7 +28,7 @@ class MedicoController {
         },
       });
 
-      res.json(medico);
+      res.json({message: 'Médico creado correctamente'})
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Error al crear el médico' });

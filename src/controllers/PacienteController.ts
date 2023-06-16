@@ -27,7 +27,7 @@ class PacienteController {
           telefono,
         },
       })
-      res.json(paciente)
+      res.json({message: 'Paciente creado correctamente'})
     } catch (e: any) {
       res.status(400)
       res.json({ error: e.message })
@@ -43,7 +43,7 @@ class PacienteController {
       const paciente = await this.prismaClient.paciente.update({
         where: { cedula: pacienteId },
         data: {
-          cedula,
+          cedula: parseInt(cedula),
           nombre,
           apellido,
           fechaNacimiento,
