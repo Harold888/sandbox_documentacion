@@ -3,7 +3,7 @@ export default {
     /**
      * @swagger
      *
-     * /pacientes:
+     * /medicos:
      *   get:
      *     summary: Obtener un Json de prueba
      *     responses:
@@ -17,14 +17,14 @@ export default {
      *                 mensaje:
      *                   type: string
      *             example:
-     *               mensaje: "Bienvenido a la ruta de pacientes"
+     *               mensaje: "Bienvenido a la ruta de medicos"
      */
-    /**
+     /**
      * @swagger
      *
-     * /crear_paciente:
+     * /crear_medico:
      *   post:
-     *     summary: Crear un nuevo paciente
+     *     summary: Crear un nuevo medico
      *     requestBody:
      *       required: true
      *       content:
@@ -32,30 +32,34 @@ export default {
      *           schema:
      *             type: object
      *             properties:
-     *               cedula:
+     *               tarjetaProfesional:
      *                 type: integer
-     *                 description: Cédula del paciente
+     *                 description: Tarjeta profesional
      *               nombre:
      *                 type: string
-     *                 description: Nombre del paciente
+     *                 description: Nombre del médico
      *               apellido:
      *                 type: string
-     *                 description: Apellido del paciente
-     *               fecha:
+     *                 description: Apellido del médico
+     *               correo:
      *                 type: string
-     *                 description: Fecha de nacimiento del paciente (en formato YYYY/MM/DD)
-     *               telefono:
+     *                 description: Correo del médico
+     *               consultorio:
      *                 type: string
-     *                 description: Teléfono del paciente
+     *                 description: Consultorio del médico
+     *               Especialidad:
+     *                  type: int
+     *                  description: Foreign key de la especialidad del médico
      *             example:
-     *               cedula: 1123456
+     *               tarjetaProfesional: 1123456
      *               nombre: "Prueba"
      *               apellido: "Prueba"
-     *               fecha: "1956/01/01"
-     *               telefono: "+57-3456789"
+     *               correo: "prueba@prueba.com"
+     *               consultorio: "208"
+     *               Especialidad: 1
      *     responses:
      *       200:
-     *         description: El paciente ha sido creado exitosamente
+     *         description: El Medico ha sido creado exitosamente
      *         content:
      *           application/json:
      *             schema:
@@ -65,9 +69,9 @@ export default {
      *                   type: string
      *                   description: Mensaje de confirmación
      *             example:
-     *               mensaje: "Paciente creado correctamente"
+     *               mensaje: "Médico creado correctamente"
      *       400:
-     *         description: Error al crear el paciente
+     *         description: Error al crear el médico
      *         content:
      *           application/json:
      *             schema:
@@ -77,8 +81,6 @@ export default {
      *                   type: string
      *                   description: Mensaje de error
      *             example:
-     *               mensaje: "Error al crear el paciente"
+     *               mensaje: "Error al crear el médico"
      */
   };
-
-  
